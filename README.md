@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## version
 
-Things you may want to cover:
+- Ruby: 3.2.2
+- postgresql: 12
 
-- Ruby version
+## 開発環境構築方法
 
-- System dependencies
+### 1.プロジェクトをクローン
 
-- Configuration
+```cmd
+$ git clone https://github.com/octopus12176/rails-docker.git
+$ cd rails-docker
+```
 
-- Database creation
+### 2.docker image をビルド
 
-- Database initialization
+```cmd
+$ docker-compose build
+```
 
-- How to run the test suite
+### 3.docker-compose up で起動
 
-- Services (job queues, cache servers, search engines, etc.)
+```cmd
+$ docker-compose up
+```
 
-- Deployment instructions
+### 4. DB 作成
 
-- ...
+```cmd
+$ docker-compose run web rake db:create
+```
+
+### 5. migrate を実施
+
+```cmd
+$ docker-compose exec web bash
+$ rails db:migrate
+```
+
+起動コマンド後、`http://localhost:3000`に接続すると web アプリが開きます。
